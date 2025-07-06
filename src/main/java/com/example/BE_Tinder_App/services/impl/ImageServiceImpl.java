@@ -27,4 +27,11 @@ public class ImageServiceImpl implements ImageService {
         if (imageOptional.isEmpty()) throw new InvalidException(MessageConstants.NOT_FOUND);
         return imageOptional.get();
     }
+
+    @Override
+    public void updateStatusImage(String status, Long idImage) {
+        Image image = findById(idImage);
+        image.setStatus(status);
+        imageRepository.save(image);
+    }
 }

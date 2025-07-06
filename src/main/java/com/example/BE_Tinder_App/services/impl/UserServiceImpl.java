@@ -1,16 +1,21 @@
 package com.example.BE_Tinder_App.services.impl;
 
+import com.example.BE_Tinder_App.common.UserStatus;
 import com.example.BE_Tinder_App.constant.MessageConstants;
 import com.example.BE_Tinder_App.dto.ChangePassword;
+import com.example.BE_Tinder_App.dto.UserInfo;
 import com.example.BE_Tinder_App.exeption.InvalidException;
+import com.example.BE_Tinder_App.models.HistoryLogin;
 import com.example.BE_Tinder_App.models.User;
+import com.example.BE_Tinder_App.repositories.HistoryLoginRepository;
 import com.example.BE_Tinder_App.repositories.UserRepository;
-import com.example.BE_Tinder_App.services.HistoryLoginService;
 import com.example.BE_Tinder_App.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -18,7 +23,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final HistoryLoginService historyLoginService;
+    private final HistoryLoginRepository historyLoginRepository;
 
     @Override
     public void createUser(User user) {
@@ -51,5 +56,27 @@ public class UserServiceImpl implements UserService {
         userUpdate.setUpdatedAt(new Date());
         userRepository.save(userUpdate);
         return userUpdate;
+    }
+
+    @Override
+    public UserInfo login(String username, String password) {
+        User user = userRepository.findByUsernameAndPassword(username, password);
+        if (Objects.isNull(user)) {
+            throw new InvalidException(MessageConstants.NOT_FOUND);
+        }
+        HistoryLogin historyLogin = new HistoryLogin();
+        historyLogin.setIdUserLogin(user.getId());
+        historyLoginRepository.save(historyLogin);
+
+        UserInfo userInfo = new UserInfo();
+        BeanUtils.copyProperties(user, userInfo);
+        return userInfo;
+    }
+
+    @Override
+    public void softDeleteUser(Long idUser) {
+        User user = findById(idUser);
+        user.setStatus(UserStatus.DELETED);
+        userRepository.save(user);
     }
 }

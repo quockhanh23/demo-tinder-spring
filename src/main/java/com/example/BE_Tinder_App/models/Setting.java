@@ -9,20 +9,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
-import java.util.Date;
-
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HistoryLogin {
-
+public class Setting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date createdAt = new Date();
-    @NotNull
-    private Long idUserLogin;
+    private int startAge;
+    private int endAge;
+    private String educationLevel;
+    private String smoke;
+    private String drinkAlcohol;
 }

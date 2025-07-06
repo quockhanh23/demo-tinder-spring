@@ -20,4 +20,5 @@ public class UserInfo {
     private Date createdAt;
     private Date updatedAt;
     private String status;
+    private String gender;
 }

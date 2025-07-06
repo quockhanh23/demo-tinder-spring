@@ -19,7 +19,7 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/getDetailUser")
-    public ResponseEntity<Object> getDetailUser(Long idUser) {
+    public ResponseEntity<Object> getDetailUser(@RequestParam Long idUser) {
         User user = userService.findById(idUser);
         UserInfo userInfo = new UserInfo();
         BeanUtils.copyProperties(user, userInfo);
@@ -27,29 +27,30 @@ public class UserController {
     }
 
     @PostMapping("/addNewUser")
-    public ResponseEntity<Object> addNewUser(User user) {
+    public ResponseEntity<Object> addNewUser(@RequestBody User user) {
         userService.createUser(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/changePassword")
-    public ResponseEntity<Object> changePassword(ChangePassword changePassword) {
+    public ResponseEntity<Object> changePassword(@RequestBody ChangePassword changePassword) {
         return new ResponseEntity<>(userService.changePassword(changePassword), HttpStatus.OK);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(User user) {
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<Object> login(@RequestBody User user) {
+        return new ResponseEntity<>(userService.login(user.getUsername(), user.getPassword()), HttpStatus.OK);
     }
 
     @PutMapping("/updateUser")
-    public ResponseEntity<Object> updateUser(Long idUser, User user) {
+    public ResponseEntity<Object> updateUser(@RequestParam Long idUser, User user) {
         User userUpdate = userService.updateUser(idUser, user);
         return new ResponseEntity<>(userUpdate, HttpStatus.OK);
     }
 
     @DeleteMapping("/softDeleteUser")
-    public ResponseEntity<Object> softDeleteUser(Long idUser) {
+    public ResponseEntity<Object> softDeleteUser(@RequestParam Long idUser) {
+        userService.softDeleteUser(idUser);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

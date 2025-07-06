@@ -7,4 +7,6 @@ public interface ImageService {
     Image createImage(Image image);
 
     Image findById(Long idImage);
+
+    void updateStatusImage(String status, Long idImage);
 }

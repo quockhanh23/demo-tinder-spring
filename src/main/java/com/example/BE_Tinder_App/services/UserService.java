@@ -9,7 +9,7 @@ public interface UserService {
 
     User findById(Long idUser);
 
-    void changePassword(ChangePassword changePassword);
+    User changePassword(ChangePassword changePassword);
 
     User updateUser(Long idUser, User user);
 }

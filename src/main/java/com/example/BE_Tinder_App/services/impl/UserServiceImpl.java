@@ -5,6 +5,7 @@ import com.example.BE_Tinder_App.dto.ChangePassword;
 import com.example.BE_Tinder_App.exeption.InvalidException;
 import com.example.BE_Tinder_App.models.User;
 import com.example.BE_Tinder_App.repositories.UserRepository;
+import com.example.BE_Tinder_App.services.HistoryLoginService;
 import com.example.BE_Tinder_App.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final HistoryLoginService historyLoginService;
 
     @Override
     public void createUser(User user) {
@@ -33,11 +35,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changePassword(ChangePassword changePassword) {
+    public User changePassword(ChangePassword changePassword) {
         User user = findById(changePassword.getIdUser());
         user.setPassword(changePassword.getNewPassword());
         user.setConfirmPassword(changePassword.getConfirmPassword());
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
     @Override

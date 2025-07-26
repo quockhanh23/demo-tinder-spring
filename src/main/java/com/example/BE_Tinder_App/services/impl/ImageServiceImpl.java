@@ -1,19 +1,37 @@
 package com.example.BE_Tinder_App.services.impl;
 
+import com.example.BE_Tinder_App.constant.MessageConstants;
+import com.example.BE_Tinder_App.exeption.InvalidException;
 import com.example.BE_Tinder_App.models.Image;
+import com.example.BE_Tinder_App.repositories.ImageRepository;
 import com.example.BE_Tinder_App.services.ImageService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
+@RequiredArgsConstructor
 public class ImageServiceImpl implements ImageService {
 
-    @Override
-    public void createImage(Image image) {
+    private final ImageRepository imageRepository;
 
+    @Override
+    public Image createImage(Image image) {
+        return imageRepository.save(image);
     }
 
     @Override
     public Image findById(Long idImage) {
-        return null;
+        Optional<Image> imageOptional = imageRepository.findById(idImage);
+        if (imageOptional.isEmpty()) throw new InvalidException(MessageConstants.NOT_FOUND);
+        return imageOptional.get();
+    }
+
+    @Override
+    public void updateStatusImage(String status, Long idImage) {
+        Image image = findById(idImage);
+        image.setStatus(status);
+        imageRepository.save(image);
     }
 }

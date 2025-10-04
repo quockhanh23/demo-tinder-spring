@@ -14,7 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Conversation {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,4 +22,6 @@ public class Conversation {
     private Date updatedAt;
     @Column(length = 20)
     private String status;
+    private Long senderId;
+    private Long recipientId;
 }

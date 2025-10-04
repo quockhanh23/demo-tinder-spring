@@ -25,6 +25,7 @@ public class AdminController {
             @RequestParam String searchText,
             @RequestParam(defaultValue = "0", required = false) int page,
             @RequestParam(defaultValue = "10", required = false) int size) {
+        userService.checkAdmin(idAdmin);
         Pageable pageable = PageRequest.of(page, size);
         Page<UserInfo> userInfoPage = userService.getAllUserPage(pageable, searchText);
         return new ResponseEntity<>(userInfoPage, HttpStatus.OK);

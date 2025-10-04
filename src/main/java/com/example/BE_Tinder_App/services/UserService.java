@@ -26,4 +26,6 @@ public interface UserService {
     Page<UserInfo> getAllUserByCondition(Pageable pageable, Long idUser);
 
     Page<UserInfo> getAllMatchPage(Pageable pageable, Long idUser);
+
+    void checkAdmin(Long idUser);
 }

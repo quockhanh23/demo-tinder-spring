@@ -79,6 +79,7 @@ public class UserServiceImpl implements UserService {
     public void actionsUser(Long idUser, UserStatus action) {
         User user = findById(idUser);
         user.setStatus(action);
+        user.setUpdatedAt(new Date());
         userRepository.save(user);
     }
 
@@ -97,5 +98,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<UserInfo> getAllMatchPage(Pageable pageable, Long idUser) {
         return userRepository.getAllMatchPage(pageable, idUser);
+    }
+
+    @Override
+    public void checkAdmin(Long idUser) {
+        User user = findById(idUser);
+        user.getRoles().stream()
+                .filter(role -> role.getName().equals("ADMIN"))
+                .findFirst().orElseThrow(() -> new InvalidException("Bạn không phải Admin"));
     }
 }

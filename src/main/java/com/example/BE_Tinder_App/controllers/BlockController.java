@@ -2,7 +2,6 @@ package com.example.BE_Tinder_App.controllers;
 
 import com.example.BE_Tinder_App.models.Block;
 import com.example.BE_Tinder_App.services.BlockService;
-import com.example.BE_Tinder_App.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

@@ -17,6 +17,7 @@ public class SettingController {
 
     @GetMapping("/getSetting")
     public ResponseEntity<Object> getSetting(@RequestParam Long idUser) {
+        Setting setting = settingRepository.findByIdUser(idUser);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

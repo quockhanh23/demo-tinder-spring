@@ -14,21 +14,17 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Setting {
+public class ChatMessage {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int startAge;
-    private int endAge;
-    @Column(length = 50)
-    private String educationLevel;
-    @Column(length = 20)
-    private String smoke;
-    @Column(length = 20)
-    private String drinkAlcohol;
-    @NotNull
-    private Long idUser;
-    private boolean defaultSetting;
-    private Date createdAt;
+    private Date createdAt = new Date();
     private Date updatedAt;
+    @Column(length = 20)
+    private String status;
+    @Column(length = 500)
+    private String content;
+    @NotNull
+    private Long idConversation;
 }

@@ -4,7 +4,9 @@ import com.example.BE_Tinder_App.models.Conversation;
 
 public interface ConversationService {
 
-    void saveConversation(Long senderId, Long recipientId);
+    Conversation saveConversation(String senderId, String recipientId);
 
-    Conversation getConversation(Long senderId, Long recipientId);
+    Conversation getConversation(String senderId, String recipientId);
+
+    Conversation getConversationById(Long id);
 }

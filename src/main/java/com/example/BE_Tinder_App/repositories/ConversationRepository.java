@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface ConversationRepository extends JpaRepository<Conversation, Long> {
 
-    Optional<Conversation> findAllBySenderIdAndRecipientId(Long senderId, Long recipientId);
+    Optional<Conversation> findAllBySenderIdAndRecipientId(String senderId, String recipientId);
 }

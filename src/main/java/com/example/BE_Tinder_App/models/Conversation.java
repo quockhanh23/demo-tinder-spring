@@ -22,6 +22,6 @@ public class Conversation {
     private Date updatedAt;
     @Column(length = 20)
     private String status;
-    private Long senderId;
-    private Long recipientId;
+    private String senderId;
+    private String recipientId;
 }

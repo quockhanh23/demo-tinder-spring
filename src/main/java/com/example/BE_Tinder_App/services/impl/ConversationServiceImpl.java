@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,22 +16,16 @@ public class ConversationServiceImpl implements ConversationService {
     private final ConversationRepository conversationRepository;
 
     @Override
-    public void saveConversation(Long senderId, Long recipientId) {
-        Conversation conversation1 = new Conversation();
-        conversation1.setCreatedAt(new Date());
-        conversation1.setSenderId(senderId);
-        conversation1.setRecipientId(recipientId);
-
-        Conversation conversation2 = new Conversation();
-        conversation2.setCreatedAt(new Date());
-        conversation2.setSenderId(recipientId);
-        conversation2.setRecipientId(senderId);
-
-        conversationRepository.saveAll(List.of(conversation1, conversation2));
+    public Conversation saveConversation(String senderId, String recipientId) {
+        Conversation conversation = new Conversation();
+        conversation.setCreatedAt(new Date());
+        conversation.setSenderId(senderId);
+        conversation.setRecipientId(recipientId);
+        return conversationRepository.save(conversation);
     }
 
     @Override
-    public Conversation getConversation(Long senderId, Long recipientId) {
+    public Conversation getConversation(String senderId, String recipientId) {
         Optional<Conversation> conversation = conversationRepository
                 .findAllBySenderIdAndRecipientId(senderId, recipientId);
         if (conversation.isEmpty()) {
@@ -45,5 +38,11 @@ public class ConversationServiceImpl implements ConversationService {
         }
         return conversation.get();
 
+    }
+
+    @Override
+    public Conversation getConversationById(Long id) {
+        Optional<Conversation> conversation = conversationRepository.findById(id);
+        return conversation.get();
     }
 }

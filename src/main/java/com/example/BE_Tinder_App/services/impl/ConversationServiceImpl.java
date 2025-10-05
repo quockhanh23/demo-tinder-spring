@@ -1,5 +1,7 @@
 package com.example.BE_Tinder_App.services.impl;
 
+import com.example.BE_Tinder_App.constant.MessageConstants;
+import com.example.BE_Tinder_App.exception.InvalidException;
 import com.example.BE_Tinder_App.models.Conversation;
 import com.example.BE_Tinder_App.repositories.ConversationRepository;
 import com.example.BE_Tinder_App.services.ConversationService;
@@ -32,17 +34,19 @@ public class ConversationServiceImpl implements ConversationService {
             Optional<Conversation> conversation1 = conversationRepository
                     .findAllBySenderIdAndRecipientId(recipientId, senderId);
             if (conversation1.isEmpty()) {
-                throw new RuntimeException();
+                throw new InvalidException(MessageConstants.NOT_FOUND);
             }
             return conversation1.get();
         }
         return conversation.get();
-
     }
 
     @Override
     public Conversation getConversationById(Long id) {
         Optional<Conversation> conversation = conversationRepository.findById(id);
+        if (conversation.isEmpty()) {
+            throw new InvalidException(MessageConstants.NOT_FOUND);
+        }
         return conversation.get();
     }
 }

@@ -1,4 +1,4 @@
-package com.example.BE_Tinder_App.exeption;
+package com.example.BE_Tinder_App.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

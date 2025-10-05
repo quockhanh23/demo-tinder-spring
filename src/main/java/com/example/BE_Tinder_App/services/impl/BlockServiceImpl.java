@@ -3,7 +3,7 @@ package com.example.BE_Tinder_App.services.impl;
 import com.example.BE_Tinder_App.common.BlockStatus;
 import com.example.BE_Tinder_App.constant.MessageConstants;
 import com.example.BE_Tinder_App.dto.UserInfo;
-import com.example.BE_Tinder_App.exeption.InvalidException;
+import com.example.BE_Tinder_App.exception.InvalidException;
 import com.example.BE_Tinder_App.models.Block;
 import com.example.BE_Tinder_App.repositories.BlockRepository;
 import com.example.BE_Tinder_App.repositories.UserRepository;

@@ -2,7 +2,7 @@ package com.example.BE_Tinder_App.services.impl;
 
 import com.example.BE_Tinder_App.constant.MessageConstants;
 import com.example.BE_Tinder_App.dto.UserInfo;
-import com.example.BE_Tinder_App.exeption.InvalidException;
+import com.example.BE_Tinder_App.exception.InvalidException;
 import com.example.BE_Tinder_App.models.Image;
 import com.example.BE_Tinder_App.repositories.ImageRepository;
 import com.example.BE_Tinder_App.services.ImageService;

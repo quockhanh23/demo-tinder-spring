@@ -4,7 +4,7 @@ import com.example.BE_Tinder_App.common.UserStatus;
 import com.example.BE_Tinder_App.constant.MessageConstants;
 import com.example.BE_Tinder_App.dto.ChangePassword;
 import com.example.BE_Tinder_App.dto.UserInfo;
-import com.example.BE_Tinder_App.exeption.InvalidException;
+import com.example.BE_Tinder_App.exception.InvalidException;
 import com.example.BE_Tinder_App.models.HistoryLogin;
 import com.example.BE_Tinder_App.models.User;
 import com.example.BE_Tinder_App.repositories.HistoryLoginRepository;

@@ -1,4 +1,4 @@
-package com.example.BE_Tinder_App.exeption;
+package com.example.BE_Tinder_App.exception;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

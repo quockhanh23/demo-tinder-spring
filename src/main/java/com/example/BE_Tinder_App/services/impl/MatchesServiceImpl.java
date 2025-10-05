@@ -1,7 +1,7 @@
 package com.example.BE_Tinder_App.services.impl;
 
 import com.example.BE_Tinder_App.constant.MessageConstants;
-import com.example.BE_Tinder_App.exeption.InvalidException;
+import com.example.BE_Tinder_App.exception.InvalidException;
 import com.example.BE_Tinder_App.models.Matches;
 import com.example.BE_Tinder_App.repositories.MatchesRepository;
 import com.example.BE_Tinder_App.services.MatchesService;

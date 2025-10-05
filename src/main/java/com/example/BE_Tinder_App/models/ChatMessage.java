@@ -27,6 +27,4 @@ public class ChatMessage {
     private String content;
     @NotNull
     private Long idConversation;
-    private String senderId;
-    private String recipientId;
 }

@@ -1,6 +1,5 @@
 package com.example.BE_Tinder_App.services;
 
-import com.example.BE_Tinder_App.dto.UserInfo;
 import com.example.BE_Tinder_App.models.ChatMessage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

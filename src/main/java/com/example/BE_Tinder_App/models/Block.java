@@ -1,6 +1,7 @@
 package com.example.BE_Tinder_App.models;
 
 
+import com.example.BE_Tinder_App.common.BlockStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Block {
     private Long id;
     private Date createdAt;
     private Date updatedAt;
-    private String status;
+    private BlockStatus status;
     @NotNull
     private Long idUserAction;
     @NotNull

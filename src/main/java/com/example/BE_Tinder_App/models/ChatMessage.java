@@ -14,16 +14,17 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Image {
+public class ChatMessage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date createdAt;
+    private Date createdAt = new Date();
     private Date updatedAt;
-    private String imageUrl;
-    @NotNull
-    private Long idUser;
     @Column(length = 20)
     private String status;
+    @Column(length = 500)
+    private String content;
+    @NotNull
+    private Long idConversation;
 }

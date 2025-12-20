@@ -14,16 +14,21 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Image {
-
+public class Setting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date createdAt;
-    private Date updatedAt;
-    private String imageUrl;
+    private int startAge;
+    private int endAge;
+    @Column(length = 50)
+    private String educationLevel;
+    @Column(length = 20)
+    private String smoke;
+    @Column(length = 20)
+    private String drinkAlcohol;
     @NotNull
     private Long idUser;
-    @Column(length = 20)
-    private String status;
+    private boolean defaultSetting;
+    private Date createdAt;
+    private Date updatedAt;
 }

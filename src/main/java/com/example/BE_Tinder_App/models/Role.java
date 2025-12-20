@@ -1,12 +1,14 @@
 package com.example.BE_Tinder_App.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -14,16 +16,11 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Image {
-
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private Date createdAt;
     private Date updatedAt;
-    private String imageUrl;
-    @NotNull
-    private Long idUser;
-    @Column(length = 20)
-    private String status;
 }

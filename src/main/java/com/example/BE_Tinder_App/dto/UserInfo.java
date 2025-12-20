@@ -1,16 +1,17 @@
 package com.example.BE_Tinder_App.dto;
 
+import com.example.BE_Tinder_App.common.UserStatus;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class UserInfo {
     private Long id;
     private String username;
@@ -19,5 +20,6 @@ public class UserInfo {
     private String coverImage;
     private Date createdAt;
     private Date updatedAt;
-    private String status;
+    private UserStatus status;
+    private String gender;
 }
